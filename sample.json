@@ -1,0 +1,16 @@
+[{
+    "name":"Hudson",
+    "age":25,
+    "city":"Switzerland",
+    "amount":1500
+},{
+    "name":"Grace",
+    "age":30,
+    "city":"New York",
+    "amount":2000
+},{
+    "name":"Jaxon",
+    "age":19,
+    "city":"Los Angeles",
+    "amount":1800
+}]
