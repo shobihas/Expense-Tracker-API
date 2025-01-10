@@ -4,7 +4,12 @@ const {v4:uuidv4}=require("uuid")
 
 const app=express();
 app.use(express.json());
-
+mongoose.connect(
+   "mongodb+srv://shobii1808:shobi@cluster0.qt0yggf.mongodb.net/"
+)
+.then(()=>{
+    console.log("Connected to DB")
+})
 
 // const students=[{
 //     id:1,
@@ -16,8 +21,8 @@ app.use(express.json());
 //     age:19
 // }]
 //connecting db
-mongoose.connect("mongodb://localhost:27017/expense")
-    .then(()=>{console.log("Connected")});
+// mongoose.connect("mongodb://localhost:27017/expense")
+//     .then(()=>{console.log("Connected")});
 //returns a promise(resolve or reject)
 
 //creating schema
@@ -55,7 +60,7 @@ app.get("/api/expenses/:id",async(req,res)=>{
 
 app.post("/api/expenses",async(req,res)=>{
     console.log(req.body);
-    const{id,title,amount}=req.body;
+    const{title,amount}=req.body;
     try{
     const newExpense=new Expenses({//object in the model of given model
         id:uuidv4(),
@@ -66,7 +71,7 @@ app.post("/api/expenses",async(req,res)=>{
     res.status(200).json(newExpense);
     }
     catch(err){
-        res.status(500).json({message:err.message})}
+        res.status(500).json({message:"POST unsuccessful"})}
 }
 )
 
