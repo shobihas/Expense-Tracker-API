@@ -1,11 +1,12 @@
 var express=require("express");
 const mongoose=require("mongoose");
-const {v4:uuidv4}=require("uuid")
-const cors=require('cors')
+const {v4:uuidv4}=require("uuid");
+const cors=require('cors');
 const app=express();
 app.use(express.json());
+app.use(cors());
 mongoose.connect(
-   "mongodb+srv://shobii1808:shobi@cluster0.qt0yggf.mongodb.net/"
+   "mongodb+srv://shobii1808:shobi@cluster0.qt0yggf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 )
 .then(()=>{
     console.log("Connected to DB")
@@ -26,6 +27,7 @@ mongoose.connect(
 //returns a promise(resolve or reject)
 
 //creating schema
+
 const expenseSchema=new mongoose.Schema({
     id:{type:String,required:true,unique:true},
     title:{type:String,required:true},
